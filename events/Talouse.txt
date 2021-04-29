@@ -218,6 +218,7 @@ country_event = { #Oust Duchy
 	option = {
 		name = talouse.12.a
 		remove_ideas = TAL_duchess_ginerva
+		set_country_flag = have_regular_puppets
 	}
 }
 
@@ -891,8 +892,8 @@ country_event = { # Get rid of the mafia
 	
 	option = {
 		name = talouse.49.a
-		add_political_power = 50
-		add_stability = 0.05
+		add_political_power = 100
+		add_stability = 0.1
 	}
 }
 
@@ -908,6 +909,7 @@ country_event = { # Monarchy Removed
 	option = {
 		name = talouse.50.a
 		remove_ideas = TAL_duchess_ginerva
+		set_country_flag = have_regular_puppets
 	}
 }
 
@@ -1240,6 +1242,7 @@ country_event = { # The SRSG's Formation.
 	option = {
 		name = talouse.68.a
 		set_cosmetic_tag  = TAL_flt_syndi_empire
+		add_war_support = 0.05
 	}		
 }
 

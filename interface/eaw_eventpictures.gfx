@@ -1318,6 +1318,12 @@ spriteTypes = {
 		name = "GFX_news_elf_assault"
 		texturefile = "gfx/event_pictures/news_elf_assault.tga"
 	}
+
+	spriteType = {
+		name = "GFX_event_pdxpls"
+		texturefile = "gfx/event_pictures/event_pdxpls.tga"
+	}
+
 	spriteType = {
 		name = "GFX_event_BVR_event"
 		texturefile = "gfx/event_pictures/BVR_Event.tga"
@@ -1329,5 +1335,9 @@ spriteTypes = {
 	spriteType = {
 		name = "GFX_news_JER_western_griffonia_event_pic"
 		texturefile = "gfx/event_pictures/JER_western_griffonia_event_pic.dds"
+	}
+	spriteType = {
+		name = "GFX_event_gallus_in_wingbardy"
+		texturefile = "gfx/event_pictures/event_gallus_in_wingbardy.dds"
 	}
 }

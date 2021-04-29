@@ -1174,12 +1174,12 @@ country_event = {
 	fire_only_once = yes
 	
 	trigger = {
-		tag = WNG
+		original_tag = WNG
 		OR = {
 			has_country_leader = { ruling_only = yes name = "Garibald Talonuel III" }
 			has_idea = WNG_garibald_talonuel_iii
 		}
-		date > 1016.1.1
+		date > 1017.1.1
 	}
 
 	immediate = {
@@ -1199,7 +1199,7 @@ country_event = {
 	}
 
 	mean_time_to_happen = {
-		days = 913 # Dies in 1017
+		days = 180 # Dies in 1017
 	}
 	
 	#Nooo! :(
@@ -1212,7 +1212,7 @@ country_event = {
 			kill_ideology_leader = neutrality
 			if = {
 				limit = {
-					has_completed_focus = WNG_absolute_rule
+					has_country_flag = WNG_gumberto_1
 				}
 				create_country_leader = {
 					name = "Gumberto II"
@@ -1221,8 +1221,105 @@ country_event = {
 					expire = "1965.1.1"
 					ideology = despotism
 					traits = {
-						hedonist
-						absolute_monarch
+						true_hedonist
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = WNG_gumberto_2
+				}
+				set_party_name = {
+					ideology = fascism
+					name = WNG_monarchy_party
+					long_name = WNG_monarchy_party_long
+				}
+				set_politics = {
+					ruling_party = fascism
+					elections_allowed = no
+				}
+				create_country_leader = {
+					name = "Gumberto II"
+					desc = "POLITICS_GUMBERTO_II_DESC"
+					picture = "Gumberto.tga"
+					expire = "1965.1.1"
+					ideology = despotism
+					traits = {
+						prince_of_blackwings
+					}
+				}
+				create_country_leader = {
+					name = "Gumberto II"
+					desc = "POLITICS_GUMBERTO_II_DESC"
+					picture = "Gumberto.tga"
+					expire = "1965.1.1"
+					ideology = nazism
+					traits = {
+						prince_of_blackwings
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = WNG_gumberto_3
+				}
+				set_party_name = {
+					ideology = fascism
+					name = WNG_monarchy_party
+					long_name = WNG_monarchy_party_long
+				}
+				set_politics = {
+					ruling_party = fascism
+					elections_allowed = no
+				}
+				create_country_leader = {
+					name = "Gumberto II"
+					desc = "POLITICS_GUMBERTO_II_DESC"
+					picture = "Gumberto.tga"
+					expire = "1965.1.1"
+					ideology = despotism
+					traits = {
+						king_of_blackwings
+					}
+				}
+				create_country_leader = {
+					name = "Gumberto II"
+					desc = "POLITICS_GUMBERTO_II_DESC"
+					picture = "Gumberto.tga"
+					expire = "1965.1.1"
+					ideology = nazism
+					traits = {
+						king_of_blackwings
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = WNG_gumberto_4
+				}
+				create_country_leader = {
+					name = "Gumberto II"
+					desc = "POLITICS_GUMBERTO_II_DESC"
+					picture = "Gumberto.tga"
+					expire = "1965.1.1"
+					ideology = despotism
+					traits = {
+						prince_of_wingbardy
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = WNG_gumberto_5
+				}
+				create_country_leader = {
+					name = "Gumberto II"
+					desc = "POLITICS_GUMBERTO_II_DESC"
+					picture = "Gumberto.tga"
+					expire = "1965.1.1"
+					ideology = despotism
+					traits = {
+						king_of_wingbardy
 					}
 				}
 			}
@@ -1254,6 +1351,15 @@ country_event = {
 			}
 			event_target:WNG_Gumberto_leader = {
 				retire = yes
+			}
+		}
+		
+		if = {
+			limit = {
+				has_completed_focus = WNG_absolute_rule
+			}
+			hidden_effect = {
+				country_event = wingbardy_gumberto.29
 			}
 		}
 		hidden_effect = {
@@ -3174,6 +3280,23 @@ country_event = {
 			}
 		}
 	}
+	option = { # Socialists (Proletarino survives)
+		name = wingbardy.70.c
+		country_event = wingbardy.703
+		ai_chance = {
+			factor = 1
+			modifier = {
+				OR = {
+					has_country_flag = WNG_AI_COMMUNIST
+					has_game_rule = {
+						rule = WNG_ai_behavior
+						option = COMMUNIST
+					}
+				}
+				factor = 0
+			}
+		}
+	}	
 }
 #WNG - Communists take power
 country_event = {
@@ -3191,6 +3314,7 @@ country_event = {
 			ruling_party = communism
 		}
 		complete_national_focus = WNG_the_communists_take_power
+		set_country_flag = have_regular_puppets
 		drop_cosmetic_tag = yes
 		hidden_effect = {
 			set_party_name = {
@@ -3222,6 +3346,7 @@ country_event = {
 
 	option = { # Socialists
 		name = wingbardy.702.a
+		kill_ideology_leader = communism
 		set_party_name = {
 			ideology = communism
 			long_name = WNG_psw_long
@@ -3238,8 +3363,61 @@ country_event = {
 		set_politics = {
 			ruling_party = communism
 		}
+		set_country_flag = have_regular_puppets
 		complete_national_focus = WNG_the_socialists_take_power
 		set_cosmetic_tag = WNG_republic
+		hidden_effect = {
+			create_country_leader = {
+				name = "Giacomo Gatteotti"
+				desc = "WNG_giacomo_gatteotti_desc"
+				picture = "Giacomo_Gatteotti.tga"
+				expire = "1965.1.1"
+				ideology = liberalism
+				traits = {
+					socialist_reformist
+				}
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = WNG_psu_long
+				name = WNG_psu
+			}
+			set_country_flag = WNG_proletarino_dead
+		}
+	}
+}
+#WNG - Socalists take power - alt
+country_event = {
+	id = wingbardy.703
+	title = wingbardy.703.t
+	desc = wingbardy.703.d
+
+	picture = GFX_event_griffon_diplomacy
+
+	is_triggered_only = yes
+
+	option = { # Socialists
+		name = wingbardy.703.a
+		set_party_name = {
+			ideology = communism
+			long_name = WNG_psw_long
+			name = WNG_psw
+		}
+		create_country_leader = {
+			name = "Giovanni Gacci"
+			ideology = democratic_socialism
+			picture = "Giovanni_Gacci.tga"
+			traits = {
+				socialist_journalist
+			}
+		}
+		set_politics = {
+			ruling_party = communism
+		}
+		set_country_flag = have_regular_puppets
+		complete_national_focus = WNG_the_socialists_take_power
+		set_cosmetic_tag = WNG_republic
+		add_political_power = -25
 		hidden_effect = {
 			create_country_leader = {
 				name = "Giacomo Gatteotti"
@@ -3752,7 +3930,46 @@ country_event = { # Gallus is Invited to Speak
 
 	option = { # 
 		name = wingbardy.81.a
-		
+		hidden_effect = {
+			country_event = {
+				id = wingbardy.812
+				hours = 1
+			}
+		}
+	}
+}
+country_event = { # Gallus is Invited to Speak
+	id = wingbardy.812
+	title = wingbardy.812.t
+	desc = wingbardy.812.d
+
+	picture = GFX_event_gallus_in_wingbardy
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+
+	option = { # 
+		name = wingbardy.812.a
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.05
+		}
+		if = {
+			limit = {
+				BOI = {
+					exists = yes
+					NOT = {
+						has_war_with = ROOT
+					}
+				}
+			}
+			diplomatic_relation = {
+				country = BOI
+				relation = guarantee
+			}
+		}
 	}
 }
 country_event = { # Harmony Elections
@@ -4170,6 +4387,103 @@ country_event = {
 		}
 	}
 }
+country_event = {
+	id = wingbardy.97
+	title = wingbardy.97.t
+	desc = wingbardy.97.d
+	picture = GFX_event_griffon_diplomacy
+	is_triggered_only = yes
+
+	option = {
+		name = wingbardy.97.a
+		add_political_power = -50
+		add_popularity = {
+			ideology = communism
+			popularity = 0.05
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = wingbardy.97.b
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = wingbardy.97.c
+		add_political_power = 50
+		add_popularity = {
+			ideology = communism
+			popularity = -0.05
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+country_event = {
+	id = wingbardy.98
+	title = wingbardy.98.t
+	desc = wingbardy.98.d
+	picture = GFX_event_griffon_diplomacy
+	is_triggered_only = yes
+
+	option = {
+		name = wingbardy.98.a
+		add_ideas = WNG_labour_camps
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = wingbardy.98.b
+		add_ideas = WNG_labour_camps_mean
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = wingbardy.98.c
+		add_ideas = WNG_labour_camps_awful
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+country_event = {
+	id = wingbardy.99
+	title = wingbardy.99.t
+	desc = wingbardy.99.d
+	picture = GFX_event_griffon_diplomacy
+	is_triggered_only = yes
+
+	option = {
+		name = wingbardy.99.a
+		add_ideas = WNG_demcent
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = wingbardy.99.b
+		add_ideas = WNG_orgcent
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = wingbardy.99.c
+		add_country_leader_trait = dictator
+		add_stability = -0.1
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
 ##########################################
 ######		WINGBARDY FLAVOUR		######
 ##########################################
@@ -4581,6 +4895,7 @@ country_event = {
 	option = { #
 		name = wingbardy_gumberto.4.a
 		hidden_effect = {
+			set_country_flag = WNG_gumberto_start
 			country_event = {
 				id = wingbardy_gumberto.6
 				days = 14
@@ -4601,6 +4916,7 @@ country_event = {
 	option = { #
 		name = wingbardy_gumberto.5.a
 		hidden_effect = {
+			set_country_flag = WNG_gumberto_start
 			country_event = {
 				id = wingbardy_gumberto.6
 				days = 14
@@ -4779,6 +5095,7 @@ country_event = {
 			add_to_variable = {
 				WNG_harsh_on_gumberto = 1
 			}
+			set_country_flag = WNG_gumberto_friends
 		}
 	}
 }
@@ -4838,7 +5155,6 @@ country_event = {
 	}
 }
 
-#Father-Son Bonding
 ## Go hunting
 
 ## Go to a state dinner
@@ -5106,7 +5422,6 @@ country_event = {
 	title = wingbardy_gumberto.21.t
 	desc = wingbardy_gumberto.21.d
 	picture = GFX_event_medieval_castle_on_hill
-	hidden = yes
 	is_triggered_only = yes
 
 	trigger = {
@@ -5116,7 +5431,7 @@ country_event = {
 	}
 	
 	option = { # We are doomed
-		name = wingbardy_gumberto.20.a
+		name = wingbardy_gumberto.21.a
 		if = {
 			limit = {
 				check_variable = {
@@ -5149,7 +5464,24 @@ country_event = {
 			}
 			country_event = wingbardy_gumberto.24
 		}
-		else = {
+		else_if = {
+			limit = {
+				NOT = { has_country_flag = WNG_gumberto_fascist }
+				NOT = { has_country_flag = WNG_gumberto_friends }
+				check_variable = {
+					WNG_easy_on_gumberto > 4
+				}
+			}
+			country_event = wingbardy_gumberto.24
+		}
+		else_if = {
+			limit = {
+				NOT = { has_country_flag = WNG_gumberto_fascist }
+				has_country_flag = WNG_gumberto_friends
+				check_variable = {
+					WNG_easy_on_gumberto > 4
+				}
+			}
 			country_event = wingbardy_gumberto.25
 		}
 	}
@@ -5197,7 +5529,7 @@ country_event = {
 		name = wingbardy_gumberto.23.a
 		custom_effect_tooltip = WNG_gumberto_skilled_fascist_tt
 		hidden_effect = {
-			set_country_flag = WNG_gumberto_2
+			set_country_flag = WNG_gumberto_3
 			set_country_flag = WNG_gumberto_exit
 		}
 	}
@@ -5221,7 +5553,7 @@ country_event = {
 		name = wingbardy_gumberto.24.a
 		custom_effect_tooltip = WNG_gumberto_medicore_tt
 		hidden_effect = {
-			set_country_flag = WNG_gumberto_2
+			set_country_flag = WNG_gumberto_4
 			set_country_flag = WNG_gumberto_exit
 		}
 	}
@@ -5245,12 +5577,132 @@ country_event = {
 		name = wingbardy_gumberto.25.a
 		custom_effect_tooltip = WNG_gumberto_skilled_tt
 		hidden_effect = {
-			set_country_flag = WNG_gumberto_2
+			set_country_flag = WNG_gumberto_5
 			set_country_flag = WNG_gumberto_exit
 		}
 	}
 }
 
+#Father-Son Bonding
+country_event = {
+	id = wingbardy_gumberto.26
+	title = wingbardy_gumberto.26.t
+	desc = wingbardy_gumberto.26.d
+	picture = GFX_event_medieval_castle_on_hill
+	
+	is_triggered_only = yes
+	trigger = {
+		NOT = {
+			has_country_flag = WNG_gumberto_exit
+		}
+	}
+	
+	option = { #
+		name = wingbardy_gumberto.26.a
+		hidden_effect = {
+			add_to_variable = {
+				WNG_harsh_on_gumberto = 1
+			}
+		}
+	}
+	option = { #
+		name = wingbardy_gumberto.26.b
+	}
+	option = { #
+		name = wingbardy_gumberto.26.c
+		hidden_effect = {
+			add_to_variable = {
+				WNG_easy_on_gumberto = 1
+			}
+		}
+	}
+}
+
+#Hunting with Gumberto
+country_event = {
+	id = wingbardy_gumberto.27
+	title = wingbardy_gumberto.27.t
+	desc = wingbardy_gumberto.27.d
+	picture = GFX_event_medieval_castle_on_hill
+	
+	is_triggered_only = yes
+	trigger = {
+		NOT = {
+			has_country_flag = WNG_gumberto_exit
+		}
+	}
+	
+	option = { #
+		name = wingbardy_gumberto.27.a
+		hidden_effect = {
+			add_to_variable = {
+				WNG_harsh_on_gumberto = 1
+			}
+		}
+	}
+	option = { #
+		name = wingbardy_gumberto.27.b
+	}
+	option = { #
+		name = wingbardy_gumberto.27.c
+		hidden_effect = {
+			add_to_variable = {
+				WNG_easy_on_gumberto = 1
+			}
+		}
+	}
+}
+
+#State Dinner
+country_event = {
+	id = wingbardy_gumberto.28
+	title = wingbardy_gumberto.28.t
+	desc = wingbardy_gumberto.28.d
+	picture = GFX_event_medieval_castle_on_hill
+	
+	is_triggered_only = yes
+	trigger = {
+		NOT = {
+			has_country_flag = WNG_gumberto_exit
+		}
+	}
+	
+	option = { #
+		name = wingbardy_gumberto.28.a
+		hidden_effect = {
+			add_to_variable = {
+				WNG_harsh_on_gumberto = 1
+			}
+		}
+	}
+	option = { #
+		name = wingbardy_gumberto.28.b
+	}
+	option = { #
+		name = wingbardy_gumberto.28.c
+		hidden_effect = {
+			add_to_variable = {
+				WNG_easy_on_gumberto = 1
+			}
+		}
+	}
+}
+
+#Give Gumberto trait if needed
+country_event = {
+	id = wingbardy_gumberto.29
+	title = wingbardy_gumberto.29.t
+	desc = wingbardy_gumberto.29.d
+	picture = GFX_event_medieval_castle_on_hill
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = wingbardy_gumberto.29.a
+		add_country_leader_trait = absolute_monarch
+	}
+}
 
 ##########################################
 ######		KING TAKOVER EVENTS		######
@@ -6046,6 +6498,7 @@ country_event = {
 	option = {
 		name = wingbardy_investigation.26.a
 		clr_country_flag = WNG_begins_the_investigation
+		add_ideas = WNG_investigation_1
 		custom_effect_tooltip = WNG_case_closed_tt
 	}
 	#More stuff.
@@ -6152,6 +6605,7 @@ country_event = {
 
 	option = {
 		name = wingbardy_investigation.30.a
+		add_ideas = WNG_investigation_2
 		if = {
 			limit = {
 				has_country_flag = WNG_mail_records_flag
@@ -6195,6 +6649,10 @@ country_event = {
 
 	option = {
 		name = wingbardy_investigation.32.a
+		swap_ideas = {
+			remove_idea = WNG_investigation_2
+			add_idea = WNG_investigation_3
+		}
 		custom_effect_tooltip = WNG_investigation_victory_tt
 	}
 }
@@ -6361,7 +6819,19 @@ news_event = {
 	option = {
 		name = news_wingbardy.7.b
 		trigger = {
-			NOT = { original_tag = WNG }
+			NOT = {
+				original_tag = WNG 
+				original_tag = TAL
+			}
+		}
+	}
+	option = {
+		name = news_wingbardy.7.c
+		remove_ideas = TAL_coal_clause
+		WNG = { remove_resource_rights = 366 }
+		WNG = { remove_resource_rights = 367 }
+		trigger = {
+			original_tag = TAL
 		}
 	}
 }

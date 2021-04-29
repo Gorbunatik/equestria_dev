@@ -103,6 +103,13 @@
 		country_resource_cost_crystals = DED_temp_used_crystals_limit 
 	}
 
+	DED_APN_factory_donations_test_modifier = {
+        icon = GFX_idea_partial_economic_mobilisation_red
+        enable = { always = yes }
+        
+        military_factory_donations = DED_APN_factory_donations_test_modifier_m
+    }
+
 	BAK_orthodoxy_stability = {
 		#if no icon, will be invisible
 		enable = { 
@@ -486,7 +493,7 @@
 	}
 
 	JER_stability_weekly_mod = {
-		icon = GFX_idea_MAN_framed_heart
+		#icon = GFX_idea_MAN_framed_heart
 		enable = {
 			has_completed_focus = JER_the_triumph
 			is_subject = no
@@ -510,4 +517,14 @@
 		static_anti_air_hit_chance_factor = 0.25
 		army_core_defence_factor = 0.25
 		state_production_speed_buildings_factor = 0.25
+	}
+
+	WNG_altar = {
+		enable = { always = yes }
+		
+		icon = GFX_modifiers_hail_forest_obelisk_icon
+
+		resistance_growth = 0.1
+		recruitable_population_factor = 0.15
+		state_production_speed_buildings_factor = 0.1
 	}

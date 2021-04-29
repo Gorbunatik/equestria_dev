@@ -391,6 +391,7 @@ focus_tree = {
 			set_politics = {
 				ruling_party = democratic
 			}
+			set_country_flag = have_regular_puppets
 			remove_ideas = WNG_political_deadlock
 			set_cosmetic_tag = WNG_republic
 		}
@@ -601,6 +602,12 @@ focus_tree = {
 				ideology = neutrality
 				popularity = -0.05
 			}
+			hidden_effect = {
+				country_event = {
+					id = wingbardy.97
+					days = 30
+				}
+			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 	}
@@ -700,7 +707,7 @@ focus_tree = {
 			
 		}
 		completion_reward = {
-			add_ideas = WNG_labour_camps
+			country_event = wingbardy.98
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
@@ -857,6 +864,40 @@ focus_tree = {
 		completion_reward = {
 			add_stability = 0.2
 			add_political_power = 100
+
+			hidden_effect = {
+				country_event = {
+					id = wingbardy.99
+					days = 37
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = WNG_commie_restoring_normalcy
+		icon = GFX_goal_HOL_council_communism
+		cost = 8
+		relative_position_id = WNG_total_control_from_karthin
+		prerequisite = {
+			focus = WNG_total_control_from_karthin
+		}
+		prerequisite = {
+			focus = WNG_the_new_economic_reality
+		}
+		x = 2
+		y = 1
+		ai_will_do = {
+			factor = 8
+		}
+		available = {
+			has_government = communism
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			country_event = wingbardy.99
 		}
 		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL }
 	}
@@ -2168,8 +2209,7 @@ focus_tree = {
 		x = 21
 		y = 0
 		ai_will_do = {
-			factor = 0
-			#TODO Enable when done
+			factor = 14
 		}
 		completion_reward = {
 			custom_effect_tooltip = WNG_stop_march_tt
@@ -2214,7 +2254,7 @@ focus_tree = {
 		x = -6
 		y = 1
 		ai_will_do = {
-			factor = 8
+			factor = 10
 		}
 		completion_reward = {
 			add_political_power = 75
@@ -2294,7 +2334,7 @@ focus_tree = {
 		x = 0
 		y = 2
 		ai_will_do = {
-			factor = 8
+			factor = 10
 		}
 		completion_reward = {
 			country_event = wingbardy.82
@@ -2321,7 +2361,7 @@ focus_tree = {
 		x = 4
 		y = 1
 		ai_will_do = {
-			factor = 8
+			factor = 10
 		}
 		completion_reward = {
 			add_political_power = 50
@@ -2533,7 +2573,7 @@ focus_tree = {
 		x = -4
 		y = 1
 		ai_will_do = {
-			factor = 8
+			factor = 10
 		}
 		completion_reward = {
 			retire_ideology_leader = democratic
@@ -4410,7 +4450,7 @@ focus_tree = {
 		x = 6
 		y = 1
 		ai_will_do = {
-			factor = 7
+			factor = 8
 		}
 		completion_reward = {
 			hidden_effect = {
@@ -4928,6 +4968,12 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 5
+			modifier = {
+				factor = 0.1
+				FAL = {
+					exists = no
+				}
+			}
 		}
 
 		completion_reward = {
@@ -6862,7 +6908,19 @@ focus_tree = {
 		}
 
 		available = {
-			has_country_flag = WNG_tarrin_compromise_met
+			OR = {
+				has_country_flag = WNG_tarrin_compromise_met
+				FRN = {
+					OR = {
+						exists = no
+						AND = {
+							NOT = { owns_state = 487 }
+							NOT = { owns_state = 652 }
+							NOT = { owns_state = 521 }
+						}
+					}
+				}
+			}
 		}
 
 		bypass = {

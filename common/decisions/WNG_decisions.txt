@@ -287,11 +287,36 @@ form_WNG_workers_empire_category = {
 		available = {
 			is_subject = no
 			owns_state = 371
-			owns_state = 366
-			owns_state = 408
-			owns_state = 529
-			owns_state = 445
-			owns_state = 515
+			OR = {
+				owns_state = 366
+				TAL = {
+					is_subject_of = ROOT
+				}
+			}
+			OR = {
+				owns_state = 408
+				ARA = {
+					is_subject_of = ROOT
+				}
+			}
+			OR = {
+				owns_state = 529
+				FAL = {
+					is_subject_of = ROOT
+				}
+			}
+			OR = {
+				owns_state = 445
+				SIC = {
+					is_subject_of = ROOT
+				}
+			}
+			OR = {
+				owns_state = 515
+				FRN = {
+					is_subject_of = ROOT
+				}
+			} 
 		}
 
 		complete_effect = {
@@ -524,7 +549,7 @@ form_WNG_workers_empire_category = {
 
 		fire_only_once = yes
 
-		cost = 150
+		cost = 50
 
 		available = {
 			is_subject = no
@@ -535,7 +560,9 @@ form_WNG_workers_empire_category = {
 
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision form_WNG_wingbardian_empire"
-			CYA = { add_to_ROOT_potential_cores = yes }
+			671 = {
+				add_core_of = ROOT
+			}
 		}
 
 		ai_will_do = {
@@ -568,6 +595,7 @@ form_WNG_wingbardian_empire_category = {
 					OR = {
 						has_completed_focus = WNG_wingbard_empire
 						has_completed_focus = WNG_the_karthinian_restoration
+						has_completed_focus = WNG_unite_the_kingdoms
 					}
 				}
 			}
@@ -577,12 +605,42 @@ form_WNG_wingbardian_empire_category = {
 		available = {
 			is_subject = no
 			# Wingbardy
-			owns_state = 371
-			owns_state = 366
-			owns_state = 408
-			owns_state = 529
-			owns_state = 445
-			owns_state = 515
+			OR = {
+				owns_state = 371
+				WNG = {
+					is_subject_of = ROOT
+				}
+			}
+			OR = {
+				owns_state = 366
+				TAL = {
+					is_subject_of = ROOT
+				}
+			}
+			OR = {
+				owns_state = 408
+				ARA = {
+					is_subject_of = ROOT
+				}
+			}
+			OR = {
+				owns_state = 529
+				FAL = {
+					is_subject_of = ROOT
+				}
+			}
+			OR = {
+				owns_state = 445
+				SIC = {
+					is_subject_of = ROOT
+				}
+			}
+			OR = {
+				owns_state = 515
+				FRN = {
+					is_subject_of = ROOT
+				}
+			} 
 		}
 
 		complete_effect = {
@@ -638,6 +696,7 @@ form_WNG_wingbardian_empire_category = {
 					}
 				}
 			}
+			NOT = { has_country_leader = { ruling_only = yes name = "Amilcare Fetivola" } }
 		}
 
 		fire_only_once = yes
@@ -646,16 +705,72 @@ form_WNG_wingbardian_empire_category = {
 
 		available = {
 			is_subject = no
+			has_war = no
 			# Wingbardy
 			has_country_flag = is_wng_empire
-			owns_state = 356
+			has_full_control_of_state = 356
+			has_full_control_of_state = 360
+			has_full_control_of_state = 361
+			has_full_control_of_state = 675
+			has_full_control_of_state = 676
+			has_full_control_of_state = 362
+			has_full_control_of_state = 363
+			has_full_control_of_state = 364
+			has_full_control_of_state = 365
+			has_full_control_of_state = 354
+			has_full_control_of_state = 355
+			has_full_control_of_state = 356
+			has_full_control_of_state = 357
+			has_full_control_of_state = 358
+			has_full_control_of_state = 359
+			EQC = {
+				exists = no
+			}
 		}
 
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision form_WNG_wingbardian_empire"
-			EQC = { add_to_ROOT_potential_cores = yes }
+			custom_effect_tooltip = release_EQC_tp
+			hidden_effect = {
+				EQC = {
+					transfer_state = 360
+					transfer_state = 361
+					transfer_state = 675
+					transfer_state = 676
+					transfer_state = 362
+					transfer_state = 363
+					transfer_state = 364
+					transfer_state = 365
+					transfer_state = 354
+					transfer_state = 355
+					transfer_state = 356
+					transfer_state = 357
+					transfer_state = 358
+					transfer_state = 359
+					ROOT = {
+						puppet = PREV
+					}
+				}
+				EQC = {
+					create_country_leader = {
+						name = "Governor Grancesco Piumoni"
+						picture = "gfx/leaders/Asia/Unknown_Griffon.dds"
+						expire = "1965.1.1"
+						ideology = despotism
+						traits = {}
+					}
+					create_country_leader = {
+						name = "Governor Grancesco Piumoni"
+						picture = "gfx/leaders/Asia/Unknown_Griffon.dds"
+						expire = "1965.1.1"
+						ideology = fascism_ideology
+						traits = {}
+					}
+					set_cosmetic_tag = EQC_WNG_protectorate
+					load_focus_tree = { tree = generic_griffon_focus keep_completed = no }
+				}
+			}
 		}
-
 		ai_will_do = {
 			factor = 150
 		}
@@ -685,6 +800,7 @@ form_WNG_wingbardian_empire_category = {
 					}
 				}
 			}
+			NOT = { has_country_leader = { ruling_only = yes name = "Amilcare Fetivola" } }
 		}
 
 		fire_only_once = yes
@@ -732,6 +848,7 @@ form_WNG_wingbardian_empire_category = {
 					}
 				}
 			}
+			NOT = { has_country_leader = { ruling_only = yes name = "Amilcare Fetivola" } }
 		}
 
 		fire_only_once = yes
@@ -826,11 +943,12 @@ form_WNG_wingbardian_empire_category = {
 					}
 				}
 			}
+			NOT = { has_country_leader = { ruling_only = yes name = "Amilcare Fetivola" } }
 		}
 
 		fire_only_once = yes
 
-		cost = 150
+		cost = 50
 
 		available = {
 			is_subject = no
@@ -840,8 +958,10 @@ form_WNG_wingbardian_empire_category = {
 		}
 
 		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision form_WNG_wingbardian_empire"
-			CYA = { add_to_ROOT_potential_cores = yes }
+			log = "[GetDateText]: [Root.GetName]: Decision intergrate_cyanolisia"
+			671 = {
+				add_core_of = ROOT
+			}
 		}
 
 		ai_will_do = {
@@ -1367,10 +1487,15 @@ foreign_politics = {
 				is_in_faction = no
 				is_faction_leader = yes
 			}
-			EQC = {
+			has_war_with = FROM
+			FROM = {
 				has_capitulated = yes
 				overlord = {
-					has_war_with = WNG
+					OR = {
+						has_war_with = WNG
+						has_war_with = TAL
+					}
+					
 				}
 			}
 			356 = {
@@ -1397,14 +1522,23 @@ foreign_politics = {
 					}
 				}
 			}
-			has_war_with = EQC
 		}
 		visible = {
-			EQC = {
+			FROM = {
+				is_subject = yes
 				overlord = {
-					has_war_with = WNG
+					OR = {
+						has_war_with = WNG
+						has_war_with = TAL
+					}
 				}
 			}
+		}
+		targets = {
+			EQC
+		}
+		target_trigger = {
+			FROM = { original_tag = EQC }
 		}
 		cost = 50
 		ai_will_do = {
@@ -1413,7 +1547,7 @@ foreign_politics = {
 		fire_only_once = yes
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision WNG_secure_new_mareland"
-			EQC = {
+			FROM = {
 				overlord = {
 					country_event = { id = wingbardy.7 hours = 2 }
 				}
@@ -2429,6 +2563,7 @@ WNG_mafia_decisions_cat ={
 				has_idea = WNG_mafia_2
 				has_idea = WNG_mafia_3
 			}
+			has_completed_focus = WNG_meet_with_beakolini
 		}
 		fire_only_once = no
 
@@ -2482,6 +2617,7 @@ WNG_mafia_decisions_cat ={
 				has_idea = WNG_mafia_2
 				has_idea = WNG_mafia_3
 			}
+			has_completed_focus = WNG_the_communists_take_power
 		}
 		fire_only_once = no
 
@@ -2534,6 +2670,7 @@ WNG_mafia_decisions_cat ={
 				has_idea = WNG_mafia_2
 				has_idea = WNG_mafia_3
 			}
+			has_completed_focus = WNG_a_victory_for_the_republicans
 		}
 		fire_only_once = no
 
@@ -2582,6 +2719,7 @@ WNG_mafia_decisions_cat ={
 				has_idea = WNG_mafia_2
 				has_idea = WNG_mafia_3
 			}
+			has_completed_focus = WNG_a_victory_for_the_republicans
 		}
 
 		allowed = {
@@ -2658,6 +2796,8 @@ WNG_altar_of_the_fatherland_cat = {
 				has_completed_focus = WNG_establish_the_national_transitional_government
 				has_completed_focus = WNG_push_the_liberals_out_of_power
 			}
+			owns_state = 371
+			has_full_control_of_state = 371
 		}
 		modifier = {
 			civilian_factory_use = 1
@@ -2693,6 +2833,8 @@ WNG_altar_of_the_fatherland_cat = {
 				has_completed_focus = WNG_viva_il_re
 				has_completed_focus = WNG_negotiate_with_the_PWDA
 			}
+			owns_state = 371
+			has_full_control_of_state = 371
 		}
 		modifier = {
 			civilian_factory_use = 1
@@ -2737,6 +2879,8 @@ WNG_altar_of_the_fatherland_cat = {
 				has_completed_focus = WNG_negotiate_with_the_PWDA
 				has_completed_focus = WNG_establish_the_national_transitional_government
 			}
+			owns_state = 371
+			has_full_control_of_state = 371
 		}
 		modifier = {
 			civilian_factory_use = 1
@@ -2773,6 +2917,8 @@ WNG_altar_of_the_fatherland_cat = {
 			has_cosmetic_tag = WNG_republic
 			NOT = { has_government = communism }
 			has_completed_focus = WNG_establish_the_national_transitional_government
+			owns_state = 371
+			has_full_control_of_state = 371
 		}
 		modifier = {
 			civilian_factory_use = 1
@@ -2805,6 +2951,8 @@ WNG_altar_of_the_fatherland_cat = {
 			has_war = no
 			has_government = communism
 			has_completed_focus = WNG_push_the_liberals_out_of_power
+			owns_state = 371
+			has_full_control_of_state = 371
 		}
 		modifier = {
 			civilian_factory_use = 1
@@ -2837,6 +2985,8 @@ WNG_altar_of_the_fatherland_cat = {
 			has_war = no
 			has_government = communism
 			has_completed_focus = WNG_push_the_liberals_out_of_power
+			owns_state = 371
+			has_full_control_of_state = 371
 		}
 		modifier = {
 			civilian_factory_use = 1
@@ -2872,6 +3022,8 @@ WNG_altar_of_the_fatherland_cat = {
 					WNG_alta_stage = 3
 				}
 			}
+			owns_state = 371
+			has_full_control_of_state = 371
 		}
 		cost = 25
 
@@ -2884,7 +3036,78 @@ WNG_altar_of_the_fatherland_cat = {
 		remove_effect = {
 			add_political_power = 50
 			add_stability = 0.05
+			371 = {
+				hidden_effect = { add_dynamic_modifier = { modifier = WNG_altar } }
+				custom_effect_tooltip = WNG_altar_tt
+			}
 			country_event = wingbardy_flavour.12
+		}
+		fire_only_once = yes
+	}
+}
+
+WNG_gumberto_teaching_cat = {
+	WNG_gumberto_bonding = {
+		visible = {
+			has_completed_focus = WNG_one_night_in_griffenheim
+			NOT = {
+				has_country_flag = WNG_gumberto_exit
+			}
+			always = no # TODO - Enable when the event is done
+		}
+		available = {
+			always = yes
+		}
+		cost = 25
+		
+		days_remove = 14
+		ai_will_do = {
+			factor = 50
+		}
+		remove_effect = {
+			country_event = wingbardy_gumberto.26
+		}
+		fire_only_once = yes
+	}
+	WNG_gumberto_hunting = {
+		visible = {
+			has_completed_focus = WNG_one_night_in_griffenheim
+			NOT = {
+				has_country_flag = WNG_gumberto_exit
+			}
+		}
+		available = {
+			always = yes
+		}
+		cost = 25
+		
+		days_remove = 14
+		ai_will_do = {
+			factor = 50
+		}
+		remove_effect = {
+			country_event = wingbardy_gumberto.27
+		}
+		fire_only_once = yes
+	}
+	WNG_gumberto_state_dinner = {
+		visible = {
+			has_completed_focus = WNG_one_night_in_griffenheim
+			NOT = {
+				has_country_flag = WNG_gumberto_exit
+			}
+		}
+		available = {
+			always = yes
+		}
+		cost = 25
+		
+		days_remove = 14
+		ai_will_do = {
+			factor = 50
+		}
+		remove_effect = {
+			country_event = wingbardy_gumberto.28
 		}
 		fire_only_once = yes
 	}
@@ -2906,7 +3129,7 @@ WNG_murder_investigation_cat = {
 			country_event = { id = wingbardy_investigation.1 }
 		}
 		ai_will_do = {
-			factor = 50
+			factor = 0
 		}
 		fire_only_once = no
 	}
@@ -3208,6 +3431,11 @@ WNG_murder_investigation_cat = {
 					has_dlc = "La Resistance"
 				}
 				owns_state = 382
+				382 = {
+					owner = {
+						is_puppet_of = WNG
+					}
+				}
 			}
 		}
 		available = {
@@ -3237,7 +3465,12 @@ WNG_murder_investigation_cat = {
 				NOT = {
 					has_dlc = "La Resistance"
 				}
-				owns_state = 389
+				owns_state = 382
+				382 = {
+					owner = {
+						is_puppet_of = WNG
+					}
+				}
 			}
 		}
 		available = {

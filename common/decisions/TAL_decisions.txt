@@ -457,8 +457,8 @@ TAL_combat_flt = {
 			
 			add_stability = -0.01
 			add_popularity = {
-				ideology = fascism
-				popularity = -0.015
+				ideology = communism
+				popularity = 0.015
 			}
 				hidden_effect = {
 					activate_mission = TAL_lrn_fight_flt_mission
@@ -1343,8 +1343,8 @@ TAL_deal_with_the_resistance = {
 			
 			add_stability = -0.01
 			add_popularity = {
-				ideology = communism
-				popularity = -0.015
+				ideology = fascism
+				popularity = 0.015
 			}
 				hidden_effect = {
 					activate_mission = TAL_flt_fight_lrn_mission
@@ -1611,10 +1611,7 @@ TAL_combat_syndies = {
 			}
 			
 			add_stability = -0.01
-			add_popularity = {
-				ideology = communism
-				popularity = -0.015
-			}
+			add_war_support = -0.005
 
 				hidden_effect = {
 					activate_mission = TAL_miners_fight_syndies_mission
@@ -1914,11 +1911,8 @@ TAL_combat_miners = {
 				value = -5
 			}
 			
-			add_stability = -0.01
-			add_popularity = {
-				ideology = communism
-				popularity = -0.015
-			}
+			add_stability = -0.005
+			add_war_support = 0.01
 				hidden_effect = {
 					activate_mission = TAL_syndies_fight_miners_mission
 				}

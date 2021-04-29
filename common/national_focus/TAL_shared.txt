@@ -2368,6 +2368,7 @@ shared_focus = {
 			add_idea = TAL_remove_tariffs2
 			remove_idea = TAL_remove_tariffs
 		}
+		remove_ideas = TAL_declining_economy_pl
 		country_event = { id = talouse.37 }
 	}
 	
@@ -3482,19 +3483,19 @@ shared_focus = {
 			366 = {
 				add_building_construction = {
 					type = bunker
-					level = 1
+					level = 2
 					instant_build = yes
 					province = 7107
 				}
 				add_building_construction = {
 					type = bunker
-					level = 1
+					level = 2
 					instant_build = yes
 					province = 4369
 				}
 				add_building_construction = {
 					type = bunker
-					level = 1
+					level = 2
 					instant_build = yes
 					province = 11984
 				}
@@ -3502,19 +3503,19 @@ shared_focus = {
 			367 = {
 				add_building_construction = {
 					type = bunker
-					level = 1
+					level = 2
 					instant_build = yes
 					province = 4303
 				}
 				add_building_construction = {
 					type = bunker
-					level = 1
+					level = 2
 					instant_build = yes
 					province = 4374
 				}
 				add_building_construction = {
 					type = bunker
-					level = 1
+					level = 2
 					instant_build = yes
 					province = 4300
 				}
@@ -3522,19 +3523,19 @@ shared_focus = {
 			368 = {
 				add_building_construction = {
 					type = bunker
-					level = 1
+					level = 2
 					instant_build = yes
 					province = 7243
 				}
 				add_building_construction = {
 					type = bunker
-					level = 1
+					level = 2
 					instant_build = yes
 					province = 7354
 				}
 				add_building_construction = {
 					type = bunker
-					level = 1
+					level = 2
 					instant_build = yes
 					province = 7392
 				}
@@ -3542,31 +3543,31 @@ shared_focus = {
 			388 = {
 				add_building_construction = {
 					type = bunker
-					level = 1
+					level = 2
 					instant_build = yes
 					province = 10277
 				}
 				add_building_construction = {
 					type = bunker
-					level = 1
+					level = 2
 					instant_build = yes
 					province = 1272
 				}
 				add_building_construction = {
 					type = bunker
-					level = 1
+					level = 2
 					instant_build = yes
 					province = 1331
 				}
 				add_building_construction = {
 					type = bunker
-					level = 1
+					level = 2
 					instant_build = yes
 					province = 4900
 				}
 				add_building_construction = {
 					type = bunker
-					level = 1
+					level = 2
 					instant_build = yes
 					province = 5033
 				}
@@ -4267,15 +4268,6 @@ shared_focus = {
 	}
 
 	available = {
-		FRN = {
-			exists = no
-		}
-		ARA = {
-			exists = no
-		}
-		WNG = {
-			exists = no
-		}
 		515 = { is_owned_and_controlled_by = ROOT }
 		408 = { is_owned_and_controlled_by = ROOT }
 		371 = { is_owned_and_controlled_by = ROOT }
@@ -4286,16 +4278,9 @@ shared_focus = {
 	}
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_our_achievement"
-		every_state = {
-			limit = {
-				OR = {
-					is_core_of = FRN
-					is_core_of = ARA 
-					is_core_of = WNG 
-				}
-			}
-			add_core_of = ROOT
-		}
+		WNG = { add_to_ROOT_potential_cores = yes }
+		FRN = { add_to_ROOT_potential_cores = yes }
+		ARA = { add_to_ROOT_potential_cores = yes }
 		country_event = { id = talouse.65 }
 		hidden_effect = {
 			news_event = { id = news_talouse.1 hours = 4 }
@@ -5672,98 +5657,22 @@ shared_focus = {
 	}
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_build_up_defenses"
-			366 = {
-				add_building_construction = {
-					type = bunker
-					level = 1
-					instant_build = yes
-					province = 7107
-				}
-				add_building_construction = {
-					type = bunker
-					level = 1
-					instant_build = yes
-					province = 4369
-				}
-				add_building_construction = {
-					type = bunker
-					level = 1
-					instant_build = yes
-					province = 11984
+		every_owned_state = {
+			limit = { 
+				is_core_of = ROOT
+				is_fully_controlled_by = ROOT
+				any_neighbor_state = { owner = { NOT = { tag = ROOT } } } 
+			}
+			add_building_construction = {
+				type = bunker
+				level = 2
+				instant_build = yes
+				province = {
+					all_provinces = yes
+					limit_to_border = yes
 				}
 			}
-			367 = {
-				add_building_construction = {
-					type = bunker
-					level = 1
-					instant_build = yes
-					province = 4303
-				}
-				add_building_construction = {
-					type = bunker
-					level = 1
-					instant_build = yes
-					province = 4374
-				}
-				add_building_construction = {
-					type = bunker
-					level = 1
-					instant_build = yes
-					province = 4300
-				}
-			}
-			368 = {
-				add_building_construction = {
-					type = bunker
-					level = 1
-					instant_build = yes
-					province = 7243
-				}
-				add_building_construction = {
-					type = bunker
-					level = 1
-					instant_build = yes
-					province = 7354
-				}
-				add_building_construction = {
-					type = bunker
-					level = 1
-					instant_build = yes
-					province = 7392
-				}
-			}
-			388 = {
-				add_building_construction = {
-					type = bunker
-					level = 1
-					instant_build = yes
-					province = 10277
-				}
-				add_building_construction = {
-					type = bunker
-					level = 1
-					instant_build = yes
-					province = 1272
-				}
-				add_building_construction = {
-					type = bunker
-					level = 1
-					instant_build = yes
-					province = 1331
-				}
-				add_building_construction = {
-					type = bunker
-					level = 1
-					instant_build = yes
-					province = 4900
-				}
-				add_building_construction = {
-					type = bunker
-					level = 1
-					instant_build = yes
-					province = 5033
-				}
-			}
+		}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	
@@ -6356,18 +6265,10 @@ shared_focus = {
 	}
 
 	available = {
-		FRN = {
-			exists = no
-		}
-		ARA = {
-			exists = no
-		}
-		WNG = {
-			exists = no
-		}
-		FAL = {
-			exists = no
-		}
+		515 = { is_owned_and_controlled_by = ROOT }
+		408 = { is_owned_and_controlled_by = ROOT }
+		371 = { is_owned_and_controlled_by = ROOT }
+		529 = { is_owned_and_controlled_by = ROOT }
 		has_government = communism
 	}
 	ai_will_do = {
@@ -6375,17 +6276,10 @@ shared_focus = {
 	}
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_our_greatest_achievement"
-		every_state = {
-			limit = {
-				OR = {
-					is_core_of = FRN
-					is_core_of = ARA 
-					is_core_of = WNG
-					is_core_of = FAL
-				}
-			}
-			add_core_of = ROOT
-		}
+		WNG = { add_to_ROOT_potential_cores = yes }
+		FAL = { add_to_ROOT_potential_cores = yes }
+		FRN = { add_to_ROOT_potential_cores = yes }
+		ARA = { add_to_ROOT_potential_cores = yes }
 		country_event = { id = talouse.68 }
 		hidden_effect = {
 			news_event = { id = news_talouse.2 hours = 4 }
@@ -7187,7 +7081,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_mountaineer_research"
 			add_tech_bonus = {
 				name = special_forces_bonus
-				bonus = 0.25
+				bonus = 1
 				uses = 2
 				technology = tech_mountaineers
 				technology = tech_mountaineers2
@@ -7217,7 +7111,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_arty_guns"
 			add_tech_bonus = {
 				name = artillery_bonus
-				bonus = 0.25
+				bonus = 1
 				uses = 2
 				technology = artillery2
 				technology = artillery3
@@ -7244,7 +7138,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_the_lrn_infantry"
 			add_tech_bonus = {
 				name = infantry_weapons_bonus
-				bonus = 0.25
+				bonus = 1
 				uses = 2
 				category = infantry_weapons
 			}		
@@ -7270,19 +7164,19 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_moterized_and_tanks"
 			add_tech_bonus = {
 				name = mech_bonus
-				bonus = 0.25
+				bonus = 1
 				uses = 1
 				category = motorized_equipment
 			}
 			add_tech_bonus = {
 				name = TAL_armor_research
-				bonus = 0.25
+				bonus = 1
 				uses = 1
 				category = armor
 			}
 			add_tech_bonus = {
 				name = motorized_bonus
-				bonus = 0.25
+				bonus = 1
 				uses = 1
 				category = cat_mechanized_equipment
 			}
@@ -7308,7 +7202,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_new_tanks_models"
 		add_tech_bonus = {
 			name = light_tank_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = cat_medium_armor
 		}
@@ -7334,7 +7228,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_support_mountainbois"
 			add_tech_bonus = {
 				name = artillery_bonus
-				bonus = 0.25
+				bonus = 1
 				uses = 2
 				category = artillery
 			}
@@ -7360,7 +7254,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_mountain_guns"
 			add_tech_bonus = {
 				name = infantry_weapons_bonus
-				bonus = 0.25
+				bonus = 1
 				uses = 2
 				category = infantry_weapons
 			}			
@@ -8075,7 +7969,7 @@ shared_focus = {
 			log = "[GetDateText]: [Root.GetName]: Focus TAL_paratrooper_project"
 			add_tech_bonus = {
 				name = paratrooper_bonus
-				bonus = 0.25
+				bonus = 1
 				uses = 2
 				technology = paratroopers
 				technology = paratroopers2
@@ -8746,7 +8640,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_a_better_infantry"
 		add_tech_bonus = {
 			name = infantry_weapons_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = infantry_weapons
 		}
@@ -8796,7 +8690,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_support_squads"
 		add_tech_bonus = {
 			name = infantry_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = support_tech
 		}
@@ -8822,7 +8716,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_magical_infantry"
 		add_tech_bonus = {
 			name = infantry_weapons_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			technology = magical_weapons
 			technology = magical_weapons1
@@ -8851,7 +8745,7 @@ shared_focus = {
 		add_manpower = 3500
 		add_tech_bonus = {
 			name = knights_tech
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = knights_tech
 		}
@@ -8921,7 +8815,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_special_forces"
 		add_tech_bonus = {
 			name = special_forces_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			technology = marines
 			technology = marines2
@@ -8949,7 +8843,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_artillery_modernization"
 		add_tech_bonus = {
 			name = artillery_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = artillery
 		}
@@ -9032,7 +8926,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_rocket_artillery_effort"
 		add_tech_bonus = {
 			name = artillery_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			technology = rocket_artillery
 			technology = rocket_artillery2
@@ -9059,7 +8953,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_army_motorization"
 		add_tech_bonus = {
 			name = mech_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = motorized_equipment
 		}
@@ -9084,7 +8978,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_tank_research"
 		add_tech_bonus = {
 			name = light_tank_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = cat_light_armor
 		}
@@ -9198,7 +9092,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_superior_firepower_for_harmony"
 		add_tech_bonus = {
 			name = cat_superior_firepower
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = cat_superior_firepower
 		}
@@ -9443,7 +9337,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_modernize_the_guns"
 		add_tech_bonus = {
 			name = infantry_weapons_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = infantry_weapons
 		}
@@ -9469,7 +9363,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_support_artillery"
 		add_tech_bonus = {
 			name = infantry_weapons_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = artillery
 		}
@@ -9494,7 +9388,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_support_divisions"
 		add_tech_bonus = {
 			name = infantry_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = support_tech
 		}
@@ -9545,13 +9439,13 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_mechanize_the_army"
 		add_tech_bonus = {
 			name = mech_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = cat_mechanized_equipment
 		}
 		add_tech_bonus = {
 			name = light_tank_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = cat_light_armor
 		}
@@ -9579,7 +9473,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_rethink_the_strategies"
 		add_tech_bonus = {
 			name = cat_grand_battle_plan
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = cat_grand_battle_plan
 		}
@@ -9807,7 +9701,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_support_roles"
 		add_tech_bonus = {
 			name = infantry_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 3
 			category = support_tech
 		}
@@ -9866,7 +9760,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_grand_doc"
 		add_tech_bonus = {
 			name = cat_grand_battle_plan
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = cat_grand_battle_plan
 		}
@@ -9893,13 +9787,13 @@ shared_focus = {
 		army_experience = 15
 		add_tech_bonus = {
 			name = support_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = engineers_tech
 		}
 		add_tech_bonus = {
 			name = electronics_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = electronics
 		}
@@ -9955,7 +9849,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_commie_superior_fire_power"
 		add_tech_bonus = {
 			name = doctrine_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = cat_superior_firepower
 		}
@@ -9991,7 +9885,7 @@ shared_focus = {
 		}
 		add_tech_bonus = {
 			name = infantry_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = infantry_weapons
 		}
@@ -10018,13 +9912,13 @@ shared_focus = {
 		army_experience = 5
 		add_tech_bonus = {
 			name = doctrine_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = cat_superior_firepower
 		}
 		add_tech_bonus = {
 			name = artillery_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = artillery
 		}
@@ -10050,7 +9944,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_talouse_katyusha"
 		add_tech_bonus = {
 			name = artillery_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			technology = rocket_artillery
 			technology = rocket_artillery2
@@ -10144,7 +10038,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_mass_assualt_ura"
 		add_tech_bonus = {
 			name = cat_mass_assault
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = cat_mass_assault
 		}
@@ -10171,7 +10065,7 @@ shared_focus = {
 		army_experience = 5
 		add_tech_bonus = {
 			name = cat_mass_assault
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = cat_mass_assault
 		}
@@ -10228,7 +10122,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_new_rifles"
 		add_tech_bonus = {
 			name = infantry_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = infantry_weapons
 		}
@@ -10314,7 +10208,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_tanks"
 		add_tech_bonus = {
 			name = tank_research
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = cat_light_armor
 		}
@@ -10340,7 +10234,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_heavy_tanks"
 		add_tech_bonus = {
 			name = tank_research
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = cat_heavy_armor
 		}
@@ -10421,7 +10315,7 @@ shared_focus = {
 		log = "[GetDateText]: [Root.GetName]: Focus TAL_support_stuff"
 		add_tech_bonus = {
 			name = infantry_bonus
-			bonus = 0.25
+			bonus = 1
 			uses = 2
 			category = support_tech
 		}
